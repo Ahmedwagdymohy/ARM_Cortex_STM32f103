@@ -1,11 +1,18 @@
-/**************************************************************/
-/**********       Author   :  Ahmed_Wagdy      ****************/
-/**********       DATE     :  6 FEB 2024       ****************/
-/**********       file   :  STD_TYPES.H        ****************/
-/**************************************************************/
+/**
+ * @file STD_TYPES.h
+ * @author Ahmed Wagdy
+ * @brief 
+ * @version 0.1
+ * @date 2024-02-06
+ * 
+ * @copyright WAGDY(c) 2024
+ * 
+ */
 
 #ifndef STD_TYPES_H_
 #define STD_TYPES_H_
+
+
 
 typedef unsigned char       u8
 typedef unsigned int        u32
@@ -19,9 +26,6 @@ typedef signed long         s64
 
 typedef float               f32
 typedef double              f64
-
-
-
 
 
 
