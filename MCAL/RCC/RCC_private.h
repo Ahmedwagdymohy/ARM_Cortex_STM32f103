@@ -1,6 +1,6 @@
 /**
  * @file RCC_private.h
- * @author your name (you@domain.com)
+ * @author Ahmed Wagdy 
  * @brief  Here we write the privat part of the code which we don't want anyone to see 
  * @version 0.1
  * @date 2024-02-07
@@ -11,6 +11,7 @@
 
 #ifndef RCC_private_H_
 #define RCC_private_H_
+
 
 
 //in the STM32F103C8 Reference Manual file we can get the addresses

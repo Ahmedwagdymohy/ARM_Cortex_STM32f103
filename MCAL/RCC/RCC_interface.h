@@ -13,6 +13,12 @@
 #define RCC_interface_H_
 
 
+Std_ReturnType MCAL_RCC_initSysClock();
+
+Std_ReturnType MCAL_RCC_EnablePeriphral();
+
+Std_ReturnType MCAL_RCC_DisablePeriphral();
+
 
 
 #endif
