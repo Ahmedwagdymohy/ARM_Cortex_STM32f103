@@ -8,3 +8,11 @@
  * @copyright Copyright (c) 2024
  * 
  */
+
+#ifndef RCC_private_H_
+#define RCC_private_H_
+
+
+
+
+#endif
