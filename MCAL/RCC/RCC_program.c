@@ -22,9 +22,22 @@
 
 
 
+/******************************************************************************************************************************************************/
+/*******************************************          CODE         *********************************************************************************/
 
 Std_ReturnType MCAL_RCC_initSysClock(){
+    #if RCC_SYSCLK  == RCC_HSI
+    /** <Enable_ HSE */
 
+    SET_BIT(RCC_CR , 0);
+    #endif  /* RCC_SYSCLK */
+    #if RCC_SYSCLK  == RCC_HSE
+    /** < Enable_HSE*/
+    
+    SET_BIT(RCC_CR , 16);
+
+
+    #endif /**< RCC_SYSCLK*/
 }
 
 Std_ReturnType MCAL_RCC_EnablePeriphral(){

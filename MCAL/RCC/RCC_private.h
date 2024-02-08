@@ -17,7 +17,13 @@
 //in the STM32F103C8 Reference Manual file we can get the addresses
 /* First we get the base address of the pripheral like RCC_BASE_ADDRESS then we get the the addresses of the registers related to this 
     periphral by adding offset to the base address*/
+/*************************************************************************************************************************************/
+/*************************************************Every register of these have a bits inside it & every bit do specific task ***************************************************************/
 
+
+//******************
+//defining registers
+//******************
 #define RCC_BASE_ADDRESS                     0x40021000 
 #define RCC_CR                    (*( u32 *)(0x40021000 + 0x00))  //clock control register
 #define RCC_CFGR                  (*( u32 *)(0x40021000 + 0x04))  //clock configration register CFGR
@@ -29,6 +35,26 @@
 #define RCC_APB1ENR               (*( u32 *)(0x40021000 + 0x1C)) // same as above but 1
 #define RCC_BDCR                  (*( u32 *)(0x40021000 + 0x20)) // same as above but 1
  
+
+
+//******************
+//defining CLOCK selections
+//******************
+#define RCC_HSI                    0  //assign values to the RCC types 
+#define RCC_HSE                    1  //for HSI->internal clk , HSE->external clk , PLL is another source depend on HSE and HSI
+#define RCC_PLL                    2
+
+//defining the types of the HSE as we have the RC and crystal types
+
+#define RCC_RC_CLK                 0
+#define RCC_CRYSTAL_CLK            1
+
+
+
+
+
+
+
 
 
 #endif

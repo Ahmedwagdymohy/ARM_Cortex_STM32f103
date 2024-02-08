@@ -9,11 +9,39 @@
  * 
  */
 
-
+//************
+//file_guard
+//************
 #ifndef RCC_config_H_
 #define RCC_config_H_ 
 
 
 
 
-#endif
+
+
+/**
+ * @brief defining the sysClk type from the RCC_private.h file 
+ *        we have three options {RCC_HSI - RCC_HSE - PLL} 
+ *  options:  RCC_HSI                    0  
+              RCC_HSE                    1  
+              RCC_PLL                    2
+ */
+
+#define RCC_SYSCLK                       RCC_HSE
+
+#if RCC_SYSCLK == RCC_HSE
+/**< define the external types */
+    #define RCC_CLK_BYPASS               RCC_RC_CLK
+
+
+
+#endif/** < RCC_SYSCLK*/
+
+
+
+
+
+
+
+#endif /* < RCC_config_H_*/
