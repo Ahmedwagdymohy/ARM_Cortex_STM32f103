@@ -39,7 +39,9 @@ Std_ReturnType MCAL_RCC_initSysClock()
          * @brief        this function modifys multiple bits in the register
          * @arg          modifyBits(u32 *reg, u8 numBits, u8 bitPositions[], u8 values[])
          */
-        modifyBits(&RCC_CFGR ,  2 , {0,1} , {0,0});
+        u8 bit_positions []= {0,1};
+        u8 Values[] = {0,1};
+        modifyBits(&RCC_CFGR , 2 , bit_positions , Values);
 
 
 
@@ -51,12 +53,17 @@ Std_ReturnType MCAL_RCC_initSysClock()
         /** < Enable_HSE*/
         while(!GET_BIT(RCC_CR , RCC_CR_HSERDY));       // make the prog wait till te HSIRDY is one and then continue the code
         SET_BIT(RCC_CR , RCC_CR_HSEON);
+
+        
         /**
          * @fn           modifyBits
          * @brief        this function modifys multiple bits in the register
          * @arg          modifyBits(u32 *reg, u8 numBits, u8 bitPositions[], u8 values[])
          */
-        modifyBits(&RCC_CFGR , 2 , {0,1} , {0,1});
+
+        u8 bit_positions []= {0,1};
+        u8 Values[] = {0,1};
+        modifyBits(&RCC_CFGR , 2 , bit_positions , Values);
 
     //types of HSE RCC_RC_CLK , RCC_CRYSTAL_CLK
     #if RCC_CLK_BYPASS == RCC_RC_CLK
@@ -73,7 +80,7 @@ Std_ReturnType MCAL_RCC_initSysClock()
 
 
 
-    //PLL
+    //PLL7
     #elif RCC_SYSCLK == RCC_PLL
 
         while(!GET_BIT(RCC_CR, RCC_CR_PLLRDY));
@@ -84,7 +91,10 @@ Std_ReturnType MCAL_RCC_initSysClock()
          * @brief        this function modifys multiple bits in the register
          * @arg          modifyBits(u32 *reg, u8 numBits, u8 bitPositions[], u8 values[])
          */
-        modifyBits(&RCC_CFGR ,  2 , {0,1} , {1,0});
+        u8 bit_positions []= {0,1};
+        u8 Values[] = {0,1};
+        modifyBits(&RCC_CFGR , 2 , bit_positions , Values);
+
     #else
         #error "Wrong choice for the SYSCLK"
     #endif /**< RCC_SYSCLK*/

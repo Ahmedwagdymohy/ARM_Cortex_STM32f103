@@ -74,6 +74,11 @@
 
 
 
+
+
+
+
+
 /**
  * @brief Edits on multiple bits of register at a time without affecting the other bits
  * 
@@ -101,6 +106,8 @@ void modifyBits(u32 *reg, u8 numBits, u8 bitPositions[], u8 values[]) {
         }
     }
 }
+
+
 
 
 
