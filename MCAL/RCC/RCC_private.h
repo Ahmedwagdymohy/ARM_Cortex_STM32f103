@@ -41,20 +41,69 @@
 //defining CLOCK selections
 //******************
 #define RCC_HSI                    0  //assign values to the RCC types 
-#define RCC_HSE                    1  //for HSI->internal clk , HSE->external clk , PLL is another source depend on HSE and HSI
+#define RCC_HSE                    1  //for HSI->internal clk , HSE->external clk , PLL is another source depends on HSE and HSI
 #define RCC_PLL                    2
 
-//defining the types of the HSE as we have the RC and crystal types
 
+//******************
+//types of the HSE 
+//******************
 #define RCC_RC_CLK                 0
 #define RCC_CRYSTAL_CLK            1
 
 
 
+//**********************
+//BITS of RCC_CR register 
+//**********************
+
+#define RCC_CR_HSION               0
+#define RCC_CR_HSIRDY              1
+#define RCC_CR_HSEON               16
+#define RCC_CR_HSERDY              17
+#define RCC_CR_HSEBYP              18
+#define RCC_CR_CSSON               19
+#define RCC_CR_PLLON               24
+#define RCC_CR_PLLRDY              25
 
 
 
+
+
+
+
+
+
+/**
+ * @brief Edits on multiple bits of register at a time without affecting the other bits
+ * 
+ * @param reg           pass the address of the register we want to edit
+ * @param numBits       number of bits we want to edit
+ * @param bitPositions  bit positions
+ * @param values        values of the bits
+ */
+void modifyBits(u32 *reg, u8 numBits, u8 bitPositions[], u8 values[]) {
+    u32 bitmask = 0;
+
+    // Create the bitmask by setting the specified bits
+    for (u8 i = 0; i < numBits; i++) {
+        bitmask |= (1 << bitPositions[i]);
+    }
+
+    // Modify the specified bits based on the values
+    for (u8 i = 0; i < numBits; i++) {
+        if (values[i]) {
+            // Set the bit if the corresponding value is 1
+            *reg |= (1 << bitPositions[i]);
+        } else {
+            // Clear the bit if the corresponding value is 0
+            *reg &= ~(1 << bitPositions[i]);
+        }
+    }
+}
 
 
 
 #endif
+
+
