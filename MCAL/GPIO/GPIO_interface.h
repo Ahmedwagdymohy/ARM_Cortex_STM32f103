@@ -13,6 +13,7 @@
 #define GPIO_INTERFACE_H_
 
 
+Std_ReturnType GPIO_SetPinDirection (u8 Copy_portId, u8 Copy_PinId, u8 Copy_PinDirection);
 
 
 

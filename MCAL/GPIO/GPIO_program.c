@@ -9,4 +9,27 @@
  * 
  */
 
+/**< LIB */
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+
+/**< Mcal_GPIO*/
+#include "GPIO_interface.h"
+#include "GPIO_private.h"
+#include "GPIO_config.h"
+
+
+
+
+Std_ReturnType GPIO_SetPinDirection (u8 Copy_portId, u8 Copy_PinId, u8 Copy_PinDirection){
+    Std_ReturnType LocalFunctionReturn = E_NOT_OK;
+
+
+
+
+
+
+
+    return LocalFunctionReturn;
+}
 
