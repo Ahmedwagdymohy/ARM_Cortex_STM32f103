@@ -11,7 +11,7 @@
 
 
 /**************************** < LIB *************************/
-#include "COTS\LIB\STD_TYPES.h"
+#include "STD_TYPES.h"
 #include "BIT_MATH.h"
 
 /**************************** < MCAL ************************/
@@ -212,6 +212,4 @@ Std_ReturnType MCAL_RCC_DisablePeriphral(u8 Copy_PeripheralId , u8 Copy_Peripher
 
     
 }
-
-
 
