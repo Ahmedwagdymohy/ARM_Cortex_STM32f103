@@ -148,7 +148,7 @@ Std_ReturnType MCAL_RCC_EnablePeriphral(u8 Copy_PeripheralId , u8 Copy_Periphera
  * @return Std_ReturnType 
  * 
  * @retval E_OK: If the functions works proberly
- *         E_NOT_OK : Error happened
+ *         E_NOT_OK: Error happened
  */
 Std_ReturnType MCAL_RCC_DisablePeriphral(u8 Copy_PeripheralId , u8 Copy_PeripheralBus);
 

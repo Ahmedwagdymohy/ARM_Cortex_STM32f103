@@ -16,7 +16,7 @@
 
 //in the STM32F103C8 Reference Manual file we can get the addresses
 /* First we get the base address of the pripheral like RCC_BASE_ADDRESS then we get the the addresses of the registers related to this 
-    periphral by adding offset to the base address*/
+    periphral by adding offset to the base address**/
 /*************************************************************************************************************************************/
 /*************************************************Every register of these have a bits inside it & every bit do specific task ***************************************************************/
 
