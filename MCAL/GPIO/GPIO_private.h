@@ -41,13 +41,13 @@
  * 
  */
 
-#define GPIO_GPIOx_CRL                  (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x00))
-#define GPIO_GPIOx_CRH                  (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x04))                                                 //port config register high
-#define GPIO_GPIOx_IDR                  (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x08))
-#define GPIO_GPIOx_ODR                  (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x0C))
-#define GPIO_GPIOx_BSRR                 (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x10))
-#define GPIO_GPIOx_BRR                  (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x14))
-#define GPIO_GPIOx_LCKR                 (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x18))
+#define GPIO_GPIOA_CRL                  (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x00))  //Port configuration register low
+#define GPIO_GPIOA_CRH                  (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x04))  //Port configuration register high                                                //port config register high
+#define GPIO_GPIOA_IDR                  (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x08))
+#define GPIO_GPIOA_ODR                  (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x0C))
+#define GPIO_GPIOA_BSRR                 (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x10))
+#define GPIO_GPIOA_BRR                  (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x14))
+#define GPIO_GPIOA_LCKR                 (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x18))
 
 
 
@@ -57,13 +57,13 @@
  * 
  */
 
-#define GPIO_GPIOx_CRL                  (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x00))
-#define GPIO_GPIOx_CRH                  (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x04))                                                 //port config register high
-#define GPIO_GPIOx_IDR                  (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x08))
-#define GPIO_GPIOx_ODR                  (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x0C))
-#define GPIO_GPIOx_BSRR                 (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x10))
-#define GPIO_GPIOx_BRR                  (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x14))
-#define GPIO_GPIOx_LCKR                 (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x18))
+#define GPIO_GPIOB_CRL                  (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x00))
+#define GPIO_GPIOB_CRH                  (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x04))                                                 //port config register high
+#define GPIO_GPIOB_IDR                  (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x08))
+#define GPIO_GPIOB_ODR                  (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x0C))
+#define GPIO_GPIOB_BSRR                 (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x10))
+#define GPIO_GPIOB_BRR                  (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x14))
+#define GPIO_GPIOB_LCKR                 (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x18))
 
 
 /************************************<PortC>**************************************************************/
@@ -71,13 +71,13 @@
  * @defgroup  Registers for portC
 */ 
 
-#define GPIO_GPIOx_CRL                  (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x00))
-#define GPIO_GPIOx_CRH                  (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x04))                                                 //port config register high
-#define GPIO_GPIOx_IDR                  (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x08))
-#define GPIO_GPIOx_ODR                  (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x0C))
-#define GPIO_GPIOx_BSRR                 (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x10))
-#define GPIO_GPIOx_BRR                  (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x14))
-#define GPIO_GPIOx_LCKR                 (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x18))
+#define GPIO_GPIOC_CRL                  (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x00))
+#define GPIO_GPIOC_CRH                  (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x04))                                                 //port config register high
+#define GPIO_GPIOC_IDR                  (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x08))
+#define GPIO_GPIOC_ODR                  (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x0C))
+#define GPIO_GPIOC_BSRR                 (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x10))
+#define GPIO_GPIOC_BRR                  (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x14))
+#define GPIO_GPIOC_LCKR                 (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x18))
 
 
 
