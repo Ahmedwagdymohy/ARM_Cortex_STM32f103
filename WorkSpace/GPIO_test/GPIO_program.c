@@ -183,17 +183,17 @@ Std_ReturnType GPIO_GetPinValue(u8 Copy_portId , u8 Copy_PinId , u8 *Copy_PinVal
         switch (Copy_portId){ //cases on which port fisrt!
 
             case GPIO_PORTA :
-                Copy_PinValue = GET_BIT(GPIO_GPIOA_IDR, Copy_PinId); 
+                *Copy_PinValue = GET_BIT(GPIO_GPIOA_IDR, Copy_PinId); 
                 LocalFunctionReturn = E_OK;   
             break;
 
             case GPIO_PORTB :
-                Copy_PinValue = GET_BIT(GPIO_GPIOB_IDR, Copy_PinId);   
+                *Copy_PinValue = GET_BIT(GPIO_GPIOB_IDR, Copy_PinId);   
                 LocalFunctionReturn = E_OK;  
             break;
 
             case GPIO_PORTC :
-                Copy_PinValue = GET_BIT(GPIO_GPIOC_IDR, Copy_PinId);  
+                *Copy_PinValue = GET_BIT(GPIO_GPIOC_IDR, Copy_PinId);  
                 LocalFunctionReturn = E_OK;   
             break;
             default: LocalFunctionReturn = E_NOT_OK;
@@ -204,10 +204,5 @@ Std_ReturnType GPIO_GetPinValue(u8 Copy_portId , u8 Copy_PinId , u8 *Copy_PinVal
     return LocalFunctionReturn;
 
 }
-
-
-
-
-
 
   

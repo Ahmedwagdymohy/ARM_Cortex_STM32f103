@@ -47,7 +47,7 @@
  *         Every macro --> Bit in the register
  */
 #define RCC_APB2ENR_AFIOEN          0
-#define RCC_APB2ENR_IOPAEN          2    //this bits is responsible for enabling the clock for portA 
+#define RCC_APB2ENR_IOPAEN          2
 #define RCC_APB2ENR_IOPBEN          3
 #define RCC_APB2ENR_IOPCEN          4
 #define RCC_APB2ENR_IOPDEN          5
@@ -104,8 +104,11 @@
 
 
 
-
-
+typedef unsigned char       u8;
+typedef unsigned int        u32;
+typedef u8                      Std_ReturnType;
+#define E_OK                    (Std_ReturnType)1
+#define E_NOT_OK                (Std_ReturnType)0
 /**
  * @brief 1. Intializing the clock for the peripheral
  *        2. choosing the clk source for the system
@@ -115,7 +118,7 @@
  * @retval E_OK: If the functions works proberly
  *         E_NOT_OK : Error happened
  */
-Std_ReturnType MCAL_RCC_initSysClock();
+Std_ReturnType MCAL_RCC_initSysClock(void);
 
 
 
@@ -130,8 +133,11 @@ Std_ReturnType MCAL_RCC_initSysClock();
  * @return Std_ReturnType 
  * 
  * @retval E_OK: If the functions works proberly
- *         E_NOT_OK : Error happened
+ *         E_NOT_OK : 
+
+ happened
  */
+ 
 Std_ReturnType MCAL_RCC_EnablePeriphral(u8 Copy_PeripheralId , u8 Copy_PeripheralBus);
 
 
@@ -148,12 +154,15 @@ Std_ReturnType MCAL_RCC_EnablePeriphral(u8 Copy_PeripheralId , u8 Copy_Periphera
  * @return Std_ReturnType 
  * 
  * @retval E_OK: If the functions works proberly
- *         E_NOT_OK: Error happened
+ *         E_NOT_OK : Error happened
  */
 Std_ReturnType MCAL_RCC_DisablePeriphral(u8 Copy_PeripheralId , u8 Copy_PeripheralBus);
 
 
 
+
+
+void modifyBits(u32 *reg, u8 numBits, u8 bitPositions[], u8 values[]);
 
 
 

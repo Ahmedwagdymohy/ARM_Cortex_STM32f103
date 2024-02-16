@@ -215,26 +215,17 @@ Std_ReturnType MCAL_RCC_DisablePeriphral(u8 Copy_PeripheralId , u8 Copy_Peripher
 
 
 
-
-
-/**
- * @brief Edits on multiple bits of register at a time without affecting the other bits
- * 
- * @param reg           pass the address of the register we want to edit
- * @param numBits       number of bits we want to edit
- * @param bitPositions  bit positions
- * @param values        values of the bits
- */
 void modifyBits(u32 *reg, u8 numBits, u8 bitPositions[], u8 values[]) {
     u32 bitmask = 0;
-    u8 i =0;
+		u8 i =0;
+
     // Create the bitmask by setting the specified bits
     for ( i = 0; i < numBits; i++) {
         bitmask |= (1 << bitPositions[i]);
     }
 
     // Modify the specified bits based on the values
-    for ( i = 0; i < numBits; i++) {
+    for (i = 0; i < numBits; i++) {
         if (values[i]) {
             // Set the bit if the corresponding value is 1
             *reg |= (1 << bitPositions[i]);
@@ -244,3 +235,4 @@ void modifyBits(u32 *reg, u8 numBits, u8 bitPositions[], u8 values[]) {
         }
     }
 }
+

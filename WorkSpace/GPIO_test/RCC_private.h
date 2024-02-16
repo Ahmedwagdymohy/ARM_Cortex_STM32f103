@@ -14,9 +14,10 @@
 
 
 
+
 //in the STM32F103C8 Reference Manual file we can get the addresses
 /* First we get the base address of the pripheral like RCC_BASE_ADDRESS then we get the the addresses of the registers related to this 
-    periphral by adding offset to the base address**/
+    periphral by adding offset to the base address*/
 /*************************************************************************************************************************************/
 /*************************************************Every register of these have a bits inside it & every bit do specific task ***************************************************************/
 
@@ -86,6 +87,16 @@
 
 
 
+
+/**
+ * @brief Edits on multiple bits of register at a time without affecting the other bits
+ * 
+ * @param reg           pass the address of the register we want to edit
+ * @param numBits       number of bits we want to edit
+ * @param bitPositions  bit positions
+ * @param values        values of the bits
+ */
+ 
 
 
 
