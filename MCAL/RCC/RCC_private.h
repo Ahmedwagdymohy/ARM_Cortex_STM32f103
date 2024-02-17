@@ -40,9 +40,9 @@
 
 
 
-//******************
+//********************
 //defining CLOCK selections
-//******************
+//*********************
 #define RCC_HSI                    0  //assign values to the RCC types 
 #define RCC_HSE                    1  //for HSI->internal clk , HSE->external clk , PLL is another source depends on HSE and HSI
 #define RCC_PLL                    2
