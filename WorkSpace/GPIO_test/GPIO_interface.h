@@ -67,7 +67,7 @@
 
 
 /****************************************     <OUTPUT modes  @2MHZ         *****************************************************/
-#define GPIO_OUTPUT_PUSH_PULL_2MHz          0b0010
+#define GPIO_OUTPUT_PUSH_PULL_2MHz          0x02
 #define GPIO_OUTPUT_OPEN_DRAIN_2MHz         0b0110
 #define GPIO_OUTPUT_AF_PUSH_PULL_2MHz       0b1010
 #define GPIO_OUTPUT_AF_OPEN_DRAIN_2MHz      0b1110
