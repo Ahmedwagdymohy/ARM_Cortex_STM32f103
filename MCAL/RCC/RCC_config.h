@@ -29,7 +29,7 @@
  */
 
 
-#define RCC_SYSCLK                              RCC_HSE
+#define RCC_SYSCLK                              RCC_HSI
 
 
 /**
