@@ -1,6 +1,6 @@
 /**
  * @file NVIC_program.c
- * @author your name (you@domain.com)
+ * @author AhmedWagdy
  * @brief 
  * @version 0.1
  * @date 2024-02-23
@@ -15,3 +15,10 @@
 #include "BIT_MATH.h"
 
 /***************************  <MCAL***************************/
+#include "NVIC_interface.h"
+#include "NVIC_private.h"
+#include "NVIC_config.h"
+
+
+
+

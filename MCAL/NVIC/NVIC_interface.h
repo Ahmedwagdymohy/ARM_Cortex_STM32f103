@@ -1,6 +1,6 @@
 /**
  * @file NVIC_interfave.h
- * @author your name (you@domain.com)
+ * @author AhmedWagdy (you@domain.com)
  * @brief 
  * @version 0.1
  * @date 2024-02-23
@@ -14,6 +14,8 @@
 
 
 
+
+Std_ReturnType MCAL_NVIC_EnableIRQ();
 
 
 
