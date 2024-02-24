@@ -15,7 +15,25 @@
 
 
 
-Std_ReturnType MCAL_NVIC_EnableIRQ();
+Std_ReturnType MCAL_NVIC_EnableIRQ(u8 Copy_IRQn );
+
+Std_ReturnType MCAL_NVIC_DisableIRQ(u8 Copy_IRQn );
+
+
+
+
+
+Std_ReturnType MCAL_NVIC_SetPendingIRQ(u8 Copy_IRQn);
+Std_ReturnType MCAL_NVIC_ClearPendingIRQ(u8 Copy_IRQn);
+Std_ReturnType MCAL_NVIC_GetPendingIRQ(u8 Copy_IRQn);
+
+
+
+
+
+ Std_ReturnType MCAL_NVIC_SetPriority(u8 Copy_IRQn);
+
+ Std_ReturnType MCAL_NVIC_ClearPriority(u8 Copy_IRQn);
 
 
 
