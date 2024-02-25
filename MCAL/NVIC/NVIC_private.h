@@ -42,7 +42,7 @@
 #define NVIC_ISPR2              (*(volatile u32*)(0x108+NVIC_BaseAdress))
 
 /**
- * @brief clearing the priority
+ * @brief clearing the priorityy
  * 
  */
 #define NVIC_ICPR0              (*(volatile u32*)(0x180+NVIC_BaseAdress))  //interrupt clear priority
