@@ -1,99 +1,76 @@
 /**
  * @file GPIO_private.h
- * @author Ahmed_Wagdy
- * @brief   The hidden part from the user
+ * @author AhmedWagdy
+ * @brief 
  * @version 0.1
- * @date 2024-02-11
+ * @date 2024-03-05
  * 
- * @copyright WAGDY(c) 2024
+ * @copyright Copyright (c) 2024
  * 
  */
+
+
+/*
+***************************************************************************
+****___****__***********************__** _ ******__****************__******
+   /   |  / /_**____*___**___**____/ /**| |     / ____*_____*_____/ __**__
+  / /| | / __ \/ __ `__ \/ _ \/ __  /***| | /| / / __ `/ __ `/ __  / / / /
+ / ___ |/ / / / / / / / /  __/ /_/ /****| |/ |/ / /_/ / /_/ / /_/ / /_/ /*
+/_/  |_/_/ /_/_/ /_/ /_/\___/\__,_/*****|__/|__/\__,_/\__, /\__,_/\__, /**
+**************************************************** /____/*******____/***
+**************************************************************************
+*/
+
+
+
+
 #ifndef GPIO_PRIVATE_H_
 #define GPIO_PRIVATE_H_
 
+/**
+ * @defgroup GPIO_Base_Addresses GPIO Base Addresses
+ * @brief Base addresses of GPIO port registers.
+ * @{
+ */
+#define GPIO_PORTA_BASE_ADDRESS     0x40010800U   /**< GPIO Port A base address */
+#define GPIO_PORTB_BASE_ADDRESS     0x40010C00U   /**< GPIO Port B base address */
+#define GPIO_PORTC_BASE_ADDRESS     0x40011000U   /**< GPIO Port C base address */
+/** @} */ // End of GPIO_Base_Addresses group
 
- /**
-  * @defgroup GPIO_ports base adresses
-  * 
-  */
-#define GPIO_PORTA_BASE_ADDRESS         0x40010800U
-#define GPIO_PORTB_BASE_ADDRESS         0x40010C00U
-#define GPIO_PORTC_BASE_ADDRESS         0x40011000U
-#define GPIO_PORTD_BASE_ADDRESS         0x40011400U
-#define GPIO_PORTE_BASE_ADDRESS         0x40011800U
-#define GPIO_PORTF_BASE_ADDRESS         0x40011C00U
-#define GPIO_PORTG_BASE_ADDRESS         0x40012000U
- 
-
-
-//NOTE
-//****
-/* all the ports are controlled by the same registers , the difference between
-    port and another is the base register of the port       */
-
-
-
-
-
-/************************************<PortA>**************************************************************/
-/** NOTE: all what changes is the base address for each port , while the registers are const
- * @defgroup  Registers for PORTA
- * 
+/**
+ * @defgroup GPIO_Registers_Addresses GPIO Registers Addresses
+ * @brief Register addresses for GPIO port registers.
+ * @{
  */
 
-#define GPIO_GPIOA_CRL                  (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x00))  //Port configuration register low
-#define GPIO_GPIOA_CRH                  (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x04))  //Port configuration register high                                                //port config register high
-#define GPIO_GPIOA_IDR                  (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x08))  // ((/*The Input Data register (GPIOx_IDR) captures the data present on the I/O pin */))
-#define GPIO_GPIOA_ODR                  (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x0C))  // port output data register
-#define GPIO_GPIOA_BSRR                 (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x10))
-#define GPIO_GPIOA_BRR                  (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x14))
-#define GPIO_GPIOA_LCKR                 (*( u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x18))
+/******************************************< REGISTERS ADDRESSES FOR PORT A ******************************************/
+#define GPIOA_CRL            (*((volatile u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x00))) /**< PORT A CONFIGURATION REGISTER LOW */
+#define GPIOA_CRH            (*((volatile u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x04))) /**< PORT A CONFIGURATION REGISTER HIGH */
+#define GPIOA_IDR            (*((volatile u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x08))) /**< PORT A INPUT DATA REGISTER */
+#define GPIOA_ODR            (*((volatile u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x0C))) /**< PORT A OUTPUT DATA REGISTER */
+#define GPIOA_BSR            (*((volatile u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x10))) /**< PORT A BIT SET/RESET REGISTER */
+#define GPIOA_BRR            (*((volatile u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x14))) /**< PORT A BIT RESET REGISTER */
+#define GPIOA_LCK            (*((volatile u32 *)(GPIO_PORTA_BASE_ADDRESS + 0x18))) /**< PORT A CONFIGURATION LOCK REGISTER */
+
+/******************************************< REGISTERS ADDRESSES FOR PORT B ******************************************/
+#define GPIOB_CRL            (*((volatile u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x00))) /**< PORT B CONFIGURATION REGISTER LOW */
+#define GPIOB_CRH            (*((volatile u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x04))) /**< PORT B CONFIGURATION REGISTER HIGH */
+#define GPIOB_IDR            (*((volatile u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x08))) /**< PORT B INPUT DATA REGISTER */
+#define GPIOB_ODR            (*((volatile u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x0C))) /**< PORT B OUTPUT DATA REGISTER */
+#define GPIOB_BSR            (*((volatile u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x10))) /**< PORT B BIT SET/RESET REGISTER */
+#define GPIOB_BRR            (*((volatile u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x14))) /**< PORT B BIT RESET REGISTER */
+#define GPIOB_LCK            (*((volatile u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x18))) /**< PORT B CONFIGURATION LOCK REGISTER */
+
+/******************************************< REGISTERS ADDRESSES FOR PORT C ******************************************/
+#define GPIOC_CRL            (*((volatile u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x00))) /**< PORT C CONFIGURATION REGISTER LOW */
+#define GPIOC_CRH            (*((volatile u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x04))) /**< PORT C CONFIGURATION REGISTER HIGH */
+#define GPIOC_IDR            (*((volatile u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x08))) /**< PORT C INPUT DATA REGISTER */
+#define GPIOC_ODR            (*((volatile u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x0C))) /**< PORT C OUTPUT DATA REGISTER */
+#define GPIOC_BSR            (*((volatile u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x10))) /**< PORT C BIT SET/RESET REGISTER */
+#define GPIOC_BRR            (*((volatile u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x14))) /**< PORT C BIT RESET REGISTER */
+#define GPIOC_LCK            (*((volatile u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x18))) /**< PORT C CONFIGURATION LOCK REGISTER */
+
+/** @} */ // End of GPIO_Registers_Addresses group
 
 
-
-/************************************<PortB>**************************************************************/
-/** NOTE: all what changes is the base address for each port , while the registers are const
- * @defgroup  Registers for PORTB
- * 
- */
-
-#define GPIO_GPIOB_CRL                  (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x00))
-#define GPIO_GPIOB_CRH                  (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x04))                                                 //port config register high
-#define GPIO_GPIOB_IDR                  (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x08))
-#define GPIO_GPIOB_ODR                  (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x0C))
-#define GPIO_GPIOB_BSRR                 (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x10))
-#define GPIO_GPIOB_BRR                  (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x14))
-#define GPIO_GPIOB_LCKR                 (*( u32 *)(GPIO_PORTB_BASE_ADDRESS + 0x18))
-
-
-/************************************<PortC>**************************************************************/
-/** NOTE: all what changes is the base address for each port , while the registers are const
- * @defgroup  Registers for portC
-*/ 
-
-#define GPIO_GPIOC_CRL                  (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x00))
-#define GPIO_GPIOC_CRH                  (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x04))                                                 //port config register high
-#define GPIO_GPIOC_IDR                  (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x08))
-#define GPIO_GPIOC_ODR                  (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x0C))
-#define GPIO_GPIOC_BSRR                 (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x10))
-#define GPIO_GPIOC_BRR                  (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x14))
-#define GPIO_GPIOC_LCKR                 (*( u32 *)(GPIO_PORTC_BASE_ADDRESS + 0x18))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#endif /**<GPIO_PRIVATE_H_ */
+#endif /**< GPIO_PRIVATE_H_ */

@@ -1,56 +1,73 @@
 /**
  * @file RCC_config.h
- * @author Ahmed Wagdy 
+ * @author AhmedWagdy
  * @brief 
  * @version 0.1
- * @date 2024-02-07
+ * @date 2024-03-05
  * 
  * @copyright Copyright (c) 2024
  * 
  */
-
-//************
-//file_guard
-//***********
-#ifndef RCC_config_H_
-#define RCC_config_H_ 
+*/
 
 
+/*
+***************************************************************************
+****___****__***********************__** _ ******__****************__******
+   /   |  / /_**____*___**___**____/ /**| |     / ____*_____*_____/ __**__
+  / /| | / __ \/ __ `__ \/ _ \/ __  /***| | /| / / __ `/ __ `/ __  / / / /
+ / ___ |/ / / / / / / / /  __/ /_/ /****| |/ |/ / /_/ / /_/ / /_/ / /_/ /*
+/_/  |_/_/ /_/_/ /_/ /_/\___/\__,_/*****|__/|__/\__,_/\__, /\__,_/\__, /**
+**************************************************** /____/*******____/***
+**************************************************************************
+*/
+#ifndef RCC_CONFIG_H_
+#define RCC_CONFIG_H_
 
+/**
+ * @defgroup RCC_System_Clock_Config RCC System Clock Configuration Macros
+ * @brief Macros for configuring the RCC system clock source and type.
+ * @{
+ */
 
+/**
+ * @brief Select the system clock source.
+ * @note Choose one of the available options:
+ *       - RCC_HSI: High-Speed Internal Clock Source (HSI).
+ *                  This option uses the internal high-speed oscillator as the system clock source.
+ *                  The HSI provides a stable and accurate clock source, suitable for most applications.
+ *       - RCC_HSE: High-Speed External Clock Source (HSE).
+ *                  This option uses an external crystal oscillator as the system clock source.
+ *                  The HSE provides a higher level of accuracy and stability compared to HSI.
+ *                  It is recommended for applications requiring precise timing.
+ *       - RCC_PLL: Phase-Locked Loop Clock Source (PLL).
+ *                  This option uses the PLL as the system clock source, which multiplies
+ *                  the frequency of an input clock source (e.g., HSI or HSE) to generate
+ *                  a higher frequency output. PLL provides flexibility in tuning the clock frequency,
+ *                  making it suitable for applications with specific performance requirements.
+ */
+#define RCC_SYSCLK            RCC_HSE
 
 
 /**
- * @brief defining the sysClk type from the RCC_private.h file 
- *        we have three options {RCC_HSI - RCC_HSE - PLL} 
- *  options:  RCC_HSI                           0  
-              RCC_HSE                           1  
-              RCC_PLL                           2
+ * @brief Configure the clock type for RCC_SYSCLK when using RCC_HSE.
+ * @note Choose one of the available options:
+ *       RCC_RC_CLK_       - RC oscillator will be the source of the clock system.
+ *       RCC_CRYSTAL_CLK_  - Crystal oscillator will be the source of the clock system.
  */
+#if RCC_SYSCLK == RCC_HSE
+
+#define RCC_CLK_BYPASS        RCC_CRYSTAL_CLK_
+                                
+#endif /**< RCC_SYSCLK */
+
+#if RCC_SYSCLK == RCC_PLL
 
 
-#define RCC_SYSCLK                              RCC_HSI
+#endif /**< RCC_SYSCLK */
+
+/** @} */ // end of RCC_System_Clock_Config
 
 
-/**
- * @brief defining the external clks types of HSE
- *  options : RCC_RC_CLK 
- *            RCC_CRYSTAL_CLK
- */
-
-#if RCC_SYSCLK == RCC_HSE       
-/**< define the external types */       
-    #define RCC_CLK_BYPASS                      RCC_RC_CLK
-    
-
-
-
-#endif/** < RCC_SYSCLK*/
-
-
-
-
-
-
-
-#endif /* < RCC_config_H_*/
+                                
+#endif /**< RCC_CONFIG_H_ */

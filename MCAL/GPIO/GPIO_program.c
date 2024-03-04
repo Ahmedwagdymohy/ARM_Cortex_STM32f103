@@ -1,213 +1,239 @@
 /**
  * @file GPIO_program.c
- *  @author Ahmed_Wagdy
- * @brief   The main application
+ * @author AhmedWagdy
+ * @brief 
  * @version 0.1
- * @date 2024-02-11
+ * @date 2024-03-05
  * 
- * @copyright WAGDY(c) 2024
+ * @copyright Copyright (c) 2024
  * 
  */
 
-/*********************************************************< LIB **************************************************************************/
+/*
+***************************************************************************
+****___****__***********************__** _ ******__****************__******
+   /   |  / /_**____*___**___**____/ /**| |     / ____*_____*_____/ __**__
+  / /| | / __ \/ __ `__ \/ _ \/ __  /***| | /| / / __ `/ __ `/ __  / / / /
+ / ___ |/ / / / / / / / /  __/ /_/ /****| |/ |/ / /_/ / /_/ / /_/ / /_/ /*
+/_/  |_/_/ /_/_/ /_/ /_/\___/\__,_/*****|__/|__/\__,_/\__, /\__,_/\__, /**
+**************************************************** /____/*******____/***
+**************************************************************************
+*/
+
+
+/*****************************< LIB *****************************/
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
-
-/********************************************************< Mcal_GPIO*************************************************************************/
+/*****************************< MCAL_GPIO *****************************/
 #include "GPIO_interface.h"
 #include "GPIO_private.h"
 #include "GPIO_config.h"
+/*****************************< Function Implementations *****************************/
+Std_ReturnType MCAL_GPIO_SetPinMode(u8 Copy_PortId, u8 Copy_PinId, u8 Copy_PinMode)
+{
+    Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
-
-
-
-
-/****************************************************************************************************************************/
-/******************************************************< SetPinDirection ******************************************************/
-/****************************************************************************************************************************/
-
-/**
- * @brief SetThe pinDirection based on user choice
- * 
- * @param Copy_portId                       A or B or C ...
- * @param Copy_PinId                        pin number {in the low register we have (0->7) and high we have (8->15)}
- * @param Copy_PinDirection                 The user enters the 4bits of the ConfigOutput (00 | 11) and we can define them to be more readable and user friendly
- * @return Std_ReturnType 
- */
-Std_ReturnType GPIO_SetPinDirection (u8 Copy_portId, u8 Copy_PinId, u8 Copy_PinDirection){
-    Std_ReturnType LocalFunctionReturn = E_NOT_OK;
-    switch (Copy_portId)
+    switch (Copy_PortId)
     {
-    /*******************************************<PortACase***********************************************************/    
     case GPIO_PORTA:
-        if(Copy_PinId < 8){ //if() to know wether the pin in theHigh register or theLow register
-        /*We have the port name and te pin number all we want is to set the direction*/
-
-             GPIO_GPIOA_CRL &= ~((0b1111) << (Copy_PinId *4) )   ;      /*this line intialize the pinBits with zero*/
-             GPIO_GPIOA_CRL |= ((Copy_PinDirection)<<(Copy_PinId *4));  /*this shifts the configBits to it's correct place without affecting the other bits*/
-
-
-
-        }else if (Copy_PinId < 16)
+        if(Copy_PinId < 8)
         {
-            GPIO_GPIOA_CRH &= ~((0b1111) << (Copy_PinId *4) )   ;
-            GPIO_GPIOA_CRH |= ((Copy_PinDirection)<<(Copy_PinId *4));
-            
+            GPIOA_CRL &= ~((0b1111) << (Copy_PinId * 4)); 
+            GPIOA_CRL |= (Copy_PinMode << (Copy_PinId * 4));
+            Local_FunctionStatus = E_OK;
         }
-        else{
-            LocalFunctionReturn =E_NOT_OK;
+        else if(Copy_PinId < 16)
+        {
+            Copy_PinId -= 8;
+            GPIOA_CRH &= ~((0b1111) << (Copy_PinId * 4)); 
+            GPIOA_CRH |= (Copy_PinMode << (Copy_PinId * 4));
+            Local_FunctionStatus = E_OK;
         }
-        
-        
-    break;
-    /*******************************************<PortBCase***********************************************************/
+        else
+        {
+            Local_FunctionStatus = E_NOT_OK;
+        }
+        break;
     case GPIO_PORTB:
-        if(Copy_PinId < 8){ //if to know wether the pin in theHigh register or theLow register
-        /*We have the port name and te pin number all we want is to set the direction*/
-
-             GPIO_GPIOB_CRL &= ~((0b1111) << (Copy_PinId *4) )   ;      /*this line intialize the pinBits with zero*/
-             GPIO_GPIOB_CRL |= ((Copy_PinDirection)<<(Copy_PinId *4));  /*this shifts the configBits to it's correct place without affecting the other bits*/
-
-
-
-        }else if (Copy_PinId < 16)
+        if(Copy_PinId < 8)
         {
-            GPIO_GPIOB_CRH &= ~((0b1111) << (Copy_PinId *4) )   ;
-            GPIO_GPIOB_CRH |= ((Copy_PinDirection)<<(Copy_PinId *4));
-            
+            GPIOB_CRL &= ~((0b1111) << (Copy_PinId * 4)); 
+            GPIOB_CRL |= (Copy_PinMode << (Copy_PinId * 4));
+            Local_FunctionStatus = E_OK;
         }
-        else{
-            LocalFunctionReturn =E_NOT_OK;
+        else if(Copy_PinId < 16)
+        {
+            Copy_PinId -= 8;
+            GPIOB_CRH &= ~((0b1111) << (Copy_PinId * 4)); 
+            GPIOB_CRH |= (Copy_PinMode << (Copy_PinId * 4));
+            Local_FunctionStatus = E_OK;
         }
-    
-    break;
-
-    /*******************************************<PortCCase***********************************************************/
+        else
+        {
+            Local_FunctionStatus = E_NOT_OK;
+        }
+        break;
     case GPIO_PORTC:
-       if(Copy_PinId < 8){ //if to know wether the pin in theHigh register or theLow register
-        /*We have the port name and te pin number all we want is to set the direction*/
-
-             GPIO_GPIOC_CRL &= ~((0b1111) << (Copy_PinId *4) )   ;      /*this line intialize the pinBits with zero*/
-             GPIO_GPIOC_CRL |= ((Copy_PinDirection)<<(Copy_PinId *4));  /*this shifts the configBits to it's correct place without affecting the other bits*/
-
-
-
-        }else if (Copy_PinId < 16)
+        if(Copy_PinId < 8)
         {
-            GPIO_GPIOC_CRH &= ~((0b1111) << (Copy_PinId *4) )   ;
-            GPIO_GPIOC_CRH |= ((Copy_PinDirection)<<(Copy_PinId *4));
-            
+            GPIOC_CRL &= ~((0b1111) << (Copy_PinId * 4)); 
+            GPIOC_CRL |= (Copy_PinMode << (Copy_PinId * 4));
+            Local_FunctionStatus = E_OK;
         }
-        else{
-            LocalFunctionReturn =E_NOT_OK;
+        else if(Copy_PinId < 16)
+        {
+            Copy_PinId -= 8;
+            GPIOC_CRH &= ~((0b1111) << (Copy_PinId * 4)); 
+            GPIOC_CRH |= (Copy_PinMode << (Copy_PinId * 4));
+            Local_FunctionStatus = E_OK;
         }
-    
-    break;
-    default: LocalFunctionReturn =E_NOT_OK;
+        else
+        {
+            Local_FunctionStatus = E_NOT_OK;
+        }
         break;
-    }
-
-
-
-
-
-
-    return LocalFunctionReturn;
-}
-
-
-/****************************************************************************************************************************/
-/******************************************************< SET PinValue******************************************************/
-/****************************************************************************************************************************/
-/**
- * @brief                                                   this function SetThe PinValue                                                
-*/
-Std_ReturnType GPIO_SetPinValue(u8 Copy_portId, u8 Copy_PinId, u8 Copy_PinValue){
-    Std_ReturnType LocalFunctionReturn = E_NOT_OK;
-    switch (Copy_portId)
-    {
-    case GPIO_PORTA:
-       SET_BIT(GPIO_GPIOA_IDR , Copy_PinValue );  // continue here
-        LocalFunctionReturn =E_OK;
-        break;
-    case GPIO_PORTB:
-        
-        LocalFunctionReturn = E_OK;
-    break;
     
-    
-
     default:
-        LocalFunctionReturn = E_NOT_OK;
+        Local_FunctionStatus = E_NOT_OK;
         break;
     }
 
-
-    return LocalFunctionReturn;
+    return Local_FunctionStatus;
 }
 
+Std_ReturnType MCAL_GPIO_SetPinValue(u8 Copy_PortId, u8 Copy_PinId, u8 Copy_PinValue)
+{
+    Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
-
-
-
-
-
-
-
-
-
-
-
-
-/****************************************************************************************************************************/
-/******************************************************< Get PinValue******************************************************/
-/****************************************************************************************************************************/
-
-/****************************************************<  important*****************************************************************/
-/**< NOTE (GPIOx_IDR) captures the data present on the I/O pin*/ //that's why we use to get the pin info , it's read only
-/***********************************************************************************************************************/
-
-/**
- * @brief                                                the function gets the pin value with the register GPIOx_IDR that's used to read only
- * 
- * @param Copy_portId                                    portname {A, B , C}
- * @param Copy_PinId                                     Pin_number
- * @param Copy_PinValue                                  the pin value we read { HIGH , LOW }
- * @return Std_ReturnType 
- */
-
-Std_ReturnType GPIO_GetPinValue(u8 Copy_portId , u8 Copy_PinId , u8 *Copy_PinValue ){
-    Std_ReturnType LocalFunctionReturn = E_NOT_OK;
-    if(Copy_PinValue != NULL){
-
-        switch (Copy_portId){ //cases on which port fisrt!
-
-            case GPIO_PORTA :
-                Copy_PinValue = GET_BIT(GPIO_GPIOA_IDR, Copy_PinId); 
-                LocalFunctionReturn = E_OK;   
-            break;
-
-            case GPIO_PORTB :
-                Copy_PinValue = GET_BIT(GPIO_GPIOB_IDR, Copy_PinId);   
-                LocalFunctionReturn = E_OK;  
-            break;
-
-            case GPIO_PORTC :
-                Copy_PinValue = GET_BIT(GPIO_GPIOC_IDR, Copy_PinId);  
-                LocalFunctionReturn = E_OK;   
-            break;
-            default: LocalFunctionReturn = E_NOT_OK;
-            break;
-
-        }
+    if(Copy_PinId > GPIO_PIN15)
+    {
+        return Local_FunctionStatus;
     }
-    return LocalFunctionReturn;
+    
+    switch (Copy_PortId)
+    {
+        case GPIO_PORTA:
+            switch (Copy_PinValue)
+            {
+                case GPIO_HIGH:
+                    SET_BIT(GPIOA_ODR, Copy_PinId);
+                    Local_FunctionStatus = E_OK;
+                    break;
+                case GPIO_LOW:
+                    CLR_BIT(GPIOA_ODR, Copy_PinId);
+                    Local_FunctionStatus = E_OK;
+                    break;
+                default:
+                    Local_FunctionStatus = E_NOT_OK;
+                    break;
+            }
+            break;
 
+        case GPIO_PORTB:
+            switch (Copy_PinValue)
+            {
+                case GPIO_HIGH:
+                    SET_BIT(GPIOB_ODR, Copy_PinId);
+                    Local_FunctionStatus = E_OK;
+                    break;
+                case GPIO_LOW:
+                    CLR_BIT(GPIOB_ODR, Copy_PinId);
+                    Local_FunctionStatus = E_OK;
+                    break;
+                default:
+                    Local_FunctionStatus = E_NOT_OK;
+                    break;
+            }
+            break;
+
+        case GPIO_PORTC:
+              switch (Copy_PinValue)
+            {
+                case GPIO_HIGH:
+                    SET_BIT(GPIOC_ODR, Copy_PinId);
+                    Local_FunctionStatus = E_OK;
+                    break;
+                case GPIO_LOW:
+                    CLR_BIT(GPIOC_ODR, Copy_PinId);
+                    Local_FunctionStatus = E_OK;
+                    break;
+                default:
+                    Local_FunctionStatus = E_NOT_OK;
+                    break;
+            }
+            break;
+
+        default:
+            Local_FunctionStatus = E_NOT_OK;
+            break;
+    }
+
+    return Local_FunctionStatus;
 }
 
+Std_ReturnType MCAL_GPIO_GetPinValue(u8 Copy_PortId, u8 Copy_PinId, u8 *Copy_PinReturnValue)
+{
+    Std_ReturnType Local_FunctionStatus = E_NOT_OK;
+
+    if(Copy_PinId > GPIO_PIN15)
+    {
+        return Local_FunctionStatus;
+    }
+
+    if(Copy_PinReturnValue != NULL)
+    {
+        switch (Copy_PortId)
+        {
+            case GPIO_PORTA:
+                *Copy_PinReturnValue = GET_BIT(GPIOA_IDR, Copy_PinId);
+                Local_FunctionStatus = E_OK;
+                break;
+            case GPIO_PORTB:
+                *Copy_PinReturnValue = GET_BIT(GPIOB_IDR, Copy_PinId);
+                Local_FunctionStatus = E_OK;
+                break;
+            case GPIO_PORTC:
+                *Copy_PinReturnValue = GET_BIT(GPIOC_IDR, Copy_PinId);
+                Local_FunctionStatus = E_OK;
+                break;
+            
+            default:
+                Local_FunctionStatus = E_NOT_OK;
+                break;
+        }
+    }   
+    else
+    {
+        Local_FunctionStatus = E_NOT_OK;
+    }
+
+    return Local_FunctionStatus;
+}
+
+Std_ReturnType MCAL_GPIO_TogglePin(u8 Copy_PortId, u8 Copy_PinId) 
+{
+    u8 Local_PinValue;
+    
+    /**< Check if the provided pin is valid */ 
+    if (MCAL_GPIO_GetPinValue(Copy_PortId, Copy_PinId, &Local_PinValue) == E_NOT_OK) 
+    {
+        return E_NOT_OK; /**< Error: Invalid pin */ 
+    }
+    
+    /**< Toggle the pin value */ 
+    if (Local_PinValue == GPIO_HIGH) 
+    {
+        /**< Pin is high, set it to low */ 
+        return MCAL_GPIO_SetPinValue(Copy_PortId, Copy_PinId, GPIO_LOW);
+    } 
+    else 
+    {
+        /**< Pin is low, set it to high */ 
+        return MCAL_GPIO_SetPinValue(Copy_PortId, Copy_PinId, GPIO_HIGH);
+    }
+}
+/*****************************< End of Function Implementations *****************************/
 
 
 
 
-
-  
