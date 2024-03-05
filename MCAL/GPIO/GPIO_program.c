@@ -28,6 +28,7 @@
 #include "GPIO_interface.h"
 #include "GPIO_private.h"
 #include "GPIO_config.h"
+#define NULL 0
 /*****************************< Function Implementations *****************************/
 Std_ReturnType MCAL_GPIO_SetPinMode(u8 Copy_PortId, u8 Copy_PinId, u8 Copy_PinMode)
 {
