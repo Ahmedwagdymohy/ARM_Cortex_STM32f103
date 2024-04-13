@@ -41,7 +41,7 @@
 #define NVIC_ICER2              (*(volatile u32*)(0x088+NVIC_BaseAdress))
 
 /**
- * @brief setting the pending registers
+ * @brief setting the pending flag registers
  * 
  */
 #define NVIC_ISPR0              (*(volatile u32*)(0x100+NVIC_BaseAdress))  //interrupt set priority register
@@ -49,7 +49,7 @@
 #define NVIC_ISPR2              (*(volatile u32*)(0x108+NVIC_BaseAdress))
 
 /**
- * @brief clearing the pending priority
+ * @brief clearing the pending flag registers
  * 
  */
 #define NVIC_ICPR0              (*(volatile u32*)(0x180+NVIC_BaseAdress))  //interrupt clear priority
@@ -59,7 +59,8 @@
 
 
 /**
- * @brief active bit
+ * @brief Active bit -- this register is read only , and it's function is to get the active interrupt (happening rightnow)
+ *         it returns 1 ==> interrupt  is active , and 0 ==> interrupt is inactive
  * 
  */
 #define NVIC_IABR0              (*(volatile u32*)(0x200+NVIC_BaseAdress))
@@ -68,7 +69,13 @@
 
 
 
+/**in the IPR (interrupt priority registers) it's accessable through bytes*/
+#define NVIC_IPR                (volatile u8 *)(0x300 + NVIC_BaseAdress)
 
 
+
+/**this register is the one responsible for the grouping and sub grouping in priorites  */
+#define system_control_block_baseAddress                0xE000ED00
+#define SCB_interruptAndResetControlRegister            (*(volatile u32*) (0x0C + system_control_block_baseAddress)) 
 
 #endif  /* NVIC_PRIVATE_H */
