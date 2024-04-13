@@ -12,6 +12,10 @@
 #define NVIC_PRIVATE_H
 
 
+/** We have 3 ISR(set enable) and 3 ICER(clear-enable) and 3 ISPR(Set-pending) and 3 ICPR(clear-pending) and 3IABR(active-bit)*/
+
+
+// 0xE000E100 is the base address of the NVIC in core registers table 
 #define NVIC_BaseAdress         0xE000E100
 
 
@@ -34,7 +38,7 @@
 #define NVIC_ICER2              (*(volatile u32*)(0x088+NVIC_BaseAdress))
 
 /**
- * @brief setting the priority
+ * @brief setting the pending registers
  * 
  */
 #define NVIC_ISPR0              (*(volatile u32*)(0x100+NVIC_BaseAdress))  //interrupt set priority register
@@ -42,7 +46,7 @@
 #define NVIC_ISPR2              (*(volatile u32*)(0x108+NVIC_BaseAdress))
 
 /**
- * @brief clearing the priorityy
+ * @brief clearing the pending priority
  * 
  */
 #define NVIC_ICPR0              (*(volatile u32*)(0x180+NVIC_BaseAdress))  //interrupt clear priority
@@ -50,6 +54,11 @@
 #define NVIC_ICPR2              (*(volatile u32*)(0x188+NVIC_BaseAdress))
 
 
+
+/**
+ * @brief active bit
+ * 
+ */
 #define NVIC_IABR0              (*(volatile u32*)(0x200+NVIC_BaseAdress))
 #define NVIC_IABR1              (*(volatile u32*)(0x204+NVIC_BaseAdress))
 #define NVIC_IABR2              (*(volatile u32*)(0x208+NVIC_BaseAdress))
