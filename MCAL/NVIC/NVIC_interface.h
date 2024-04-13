@@ -12,6 +12,17 @@
 #ifndef NVIC_INTERFACE_H
 #define NVIC_INTERFACE_H
 
+/**assaf code */
+void MNVIC_voidEnableInterrupt(u8 Copy_u8InterNum);
+void MNVIC_voidDisableInterrupt(u8 Copy_u8InterNum);
+void MNVIC_voidSetpendingFlag(u8 Copy_u8InterNum);
+void MNCIV_voidClearPendingFlag(u8 Copy_u8InterNum);
+
+
+
+
+
+
 
 
 

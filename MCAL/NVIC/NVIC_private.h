@@ -29,10 +29,13 @@
 #define NVIC_ISER2              (*(volatile u32*)(0x008+NVIC_BaseAdress))
 
 
-/**
- * @brief Clears the interrupts
+/**         /**we enable the interrupts from ISER and disabling it from ICER
+ *          /** writing zero in both registers will have no effect
  * 
+ * @brief Clears the interrupts
+ *        
  */
+
 #define NVIC_ICER0              (*(volatile u32*)(0x080+NVIC_BaseAdress) ) //interrupt clear/enable registers
 #define NVIC_ICER1              (*(volatile u32*)(0x084+NVIC_BaseAdress))
 #define NVIC_ICER2              (*(volatile u32*)(0x088+NVIC_BaseAdress))
