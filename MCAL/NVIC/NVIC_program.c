@@ -97,6 +97,7 @@ u8 MNVIC_u8ActiveBit(u8 Copy_u8InterNum){
 
 
 void MNVIC_voidSetpriority(s8 Copy_u8InterrupNum, u8 Copy_u8GroupPriority, u8 Copy_u8SubGroupPriority){
+
     
 
 
